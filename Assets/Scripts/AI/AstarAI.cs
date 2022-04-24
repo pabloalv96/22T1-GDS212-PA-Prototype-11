@@ -6,6 +6,9 @@ using Pathfinding;
 public class AstarAI : MonoBehaviour
 {
     public Transform targetPosition;
+
+    private Seeker seeker;
+
     private CharacterController controller;
 
     public Path path;
@@ -16,30 +19,50 @@ public class AstarAI : MonoBehaviour
 
     private int currentWaypoint = 0;
 
+    public float repathRate = 0.5f;
+    private float lastRepath = float.NegativeInfinity;
+
     public bool reachedEndOfPath;
     void Start()
     {
-        Seeker seeker = GetComponent<Seeker>();
+        seeker = GetComponent<Seeker>();
 
         controller = GetComponent<CharacterController>();
 
-        seeker.StartPath(transform.position, targetPosition.position, OnPathComplete);
+        targetPosition.GetComponent<RandomWaypoint>().SetNewWaypoint();
+
     }
 
-   public void OnPathComplete (Path p)
+    public void OnPathComplete (Path p)
     {
         Debug.Log("Path found! Errors:" + p.error);
-
+        
+        p.Claim(this);
         if (!p.error)
         {
-            path = p;
-            // Reset the waypoint counter so that we start to move towards the first point in the path
-            currentWaypoint = 0;
+            if (path != null) path.Release(this);
+            {
+                path = p;
+                // Reset the waypoint counter so that we start to move towards the first point in the path
+                currentWaypoint = 0;
+            } 
+        }
+        else
+        {
+            p.Release(this);
         }
     }
 
     public void Update()
     {
+       if (Time.time > lastRepath + repathRate && seeker.IsDone())
+        {
+            lastRepath = Time.time;
+
+            seeker.StartPath(transform.position, targetPosition.position, OnPathComplete);
+
+        }
+
         if (path == null)
         {
             // if there isn't a path, dont do anything
@@ -64,7 +87,7 @@ public class AstarAI : MonoBehaviour
                 }
                 else
                 {
-
+                    targetPosition.GetComponent<RandomWaypoint>().SetNewWaypoint();
                     reachedEndOfPath = true;
                     break;
                 }
