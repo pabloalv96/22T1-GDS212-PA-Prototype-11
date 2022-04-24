@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using BehaviorDesigner.Runtime.Tasks;
+using BehaviorDesigner.Runtime;
 
-public class AstarAI : MonoBehaviour
+public class AIPatrol : Action
 {
     public Transform targetPosition;
 
@@ -23,7 +25,7 @@ public class AstarAI : MonoBehaviour
     private float lastRepath = float.NegativeInfinity;
 
     public bool reachedEndOfPath;
-    void Start()
+    public override void OnAwake()
     {
         seeker = GetComponent<Seeker>();
 
@@ -53,7 +55,7 @@ public class AstarAI : MonoBehaviour
         }
     }
 
-    public void Update()
+    public override TaskStatus OnUpdate()
     {
        if (Time.time > lastRepath + repathRate && seeker.IsDone())
         {
@@ -66,7 +68,7 @@ public class AstarAI : MonoBehaviour
         if (path == null)
         {
             // if there isn't a path, dont do anything
-            return;
+            return TaskStatus.Failure;
         }
 
         // loop to check whether it has reached the current waypoint and should swap to the next
@@ -89,7 +91,7 @@ public class AstarAI : MonoBehaviour
                 {
                     targetPosition.GetComponent<RandomWaypoint>().SetNewWaypoint();
                     reachedEndOfPath = true;
-                    break;
+                    return TaskStatus.Success;
                 }
             }
             else
@@ -110,5 +112,8 @@ public class AstarAI : MonoBehaviour
         //Move the agent with the Character Controller
         controller.SimpleMove(velocity);
         // Note that SimpleMove takes a velocity in meters/second, so we should not multiply by Time.deltaTime
+
+        return TaskStatus.Running;
+
     }
 }
