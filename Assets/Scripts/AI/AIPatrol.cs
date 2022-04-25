@@ -73,7 +73,7 @@ public class AIPatrol : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.SphereCast(eyes.position, fieldOfView.viewRadius, transform.forward, out hit, fieldOfView.viewRadius))
+        if (Physics.SphereCast(eyes.position, fieldOfView.viewRadius, transform.forward, out hit, fieldOfView.viewRadius, 6))
         {
             Debug.DrawLine(transform.position, hit.point, Color.cyan);
 

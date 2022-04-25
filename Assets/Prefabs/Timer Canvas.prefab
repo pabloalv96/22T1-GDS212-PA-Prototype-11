@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 8549463502937139574}
   - component: {fileID: 5868797549012038994}
   - component: {fileID: 1704767192655388832}
+  - component: {fileID: 4355085503339937001}
   m_Layer: 5
   m_Name: Countdown
   m_TagString: Untagged
@@ -371,3 +372,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4355085503339937001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424420020929011914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98b83fa4aa76b8429a8ed9dd26d3849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeValue: 90
+  timeText: {fileID: 1704767192655388832}
