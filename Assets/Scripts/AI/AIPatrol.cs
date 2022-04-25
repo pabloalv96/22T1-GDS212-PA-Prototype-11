@@ -11,7 +11,7 @@ public class AIPatrol : Action
 
     private Seeker seeker;
 
-    private CharacterController controller;
+    //private CharacterController controller;
 
     public Path path;
 
@@ -29,7 +29,7 @@ public class AIPatrol : Action
     {
         seeker = GetComponent<Seeker>();
 
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
 
         targetPosition.GetComponent<RandomWaypoint>().SetNewWaypoint();
 
@@ -110,8 +110,12 @@ public class AIPatrol : Action
         Vector3 velocity = dir * speed * speedFactor;
 
         //Move the agent with the Character Controller
-        controller.SimpleMove(velocity);
+        //controller.SimpleMove(velocity);
         // Note that SimpleMove takes a velocity in meters/second, so we should not multiply by Time.deltaTime
+
+        transform.position += velocity * Time.deltaTime;
+
+        transform.LookAt(targetPosition.position);
 
         return TaskStatus.Running;
 

@@ -11,11 +11,11 @@ public class RunAway : Action
 
     public bool avoidedTarget;
 
-    private CharacterController controller;
+    //private CharacterController controller;
 
     public override void OnAwake()
     {
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
     }
     public override TaskStatus OnUpdate()
     {
@@ -26,12 +26,16 @@ public class RunAway : Action
         //transform.position = Vector3.MoveTowards(transform.position, -target.Value.position, speed * Time.deltaTime);
 
         // get and normalize the direction to the next waypoint to 1 world unit
-        Vector3 dir = (target.Value.position + transform.position).normalized;
+        Vector3 dir = (-target.Value.position + transform.position).normalized;
         // multiply the direction by the desired speed
         Vector3 velocity = dir * speed;
 
         //Move the agent with the Character Controller
-        controller.SimpleMove(velocity);
+        //controller.SimpleMove(velocity);
+
+        transform.position += velocity * Time.deltaTime;
+
+        transform.LookAt(dir);
 
         return TaskStatus.Running;
     }

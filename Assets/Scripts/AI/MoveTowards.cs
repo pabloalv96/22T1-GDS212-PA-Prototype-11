@@ -9,11 +9,11 @@ public class MoveTowards : Action
     public float speed = 5f;
     public SharedTransform target;
 
-    private CharacterController controller;
+    //private CharacterController controller;
 
     public override void OnAwake()
     {
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
     }
     public override TaskStatus OnUpdate()
     {
@@ -28,9 +28,10 @@ public class MoveTowards : Action
         // multiply the direction by the desired speed
         Vector3 velocity = dir * speed;
 
-        //Move the agent with the Character Controller
-        controller.SimpleMove(velocity);
-        // Note that SimpleMove takes a velocity in meters/second, so we should not multiply by Time.deltaTime
+        transform.position += velocity * Time.deltaTime;
+
+        transform.LookAt(dir);
+
         return TaskStatus.Running;
     }
 }
