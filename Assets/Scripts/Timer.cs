@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] float timeValue = 90f;
-    [SerializeField] Text timeText;
+    [SerializeField] TextMeshProUGUI timeText;
 
     // Start is called before the first frame update
     void Start()
