@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  health: 100
 --- !u!114 &6634074387633256635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,8 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce5fb8d60b6a6e4f81e1c948667cfc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerSecond: 5
+  damagePerSecond: 20
   health: 100
+  endGameUI: {fileID: 0}
+  winLoseText: {fileID: 0}
+  endGameText: {fileID: 0}
 --- !u!1 &6634074388805821921
 GameObject:
   m_ObjectHideFlags: 0

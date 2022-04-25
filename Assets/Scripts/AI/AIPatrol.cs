@@ -13,7 +13,7 @@ public class AIPatrol : MonoBehaviour
 
     public Path path;
 
-    public float speed = 2f, turnSpeed = 5f, health = 100f;
+    public float speed = 2f, turnSpeed = 5f;
 
     public float nextWaypointDistance = 2.5f;
 

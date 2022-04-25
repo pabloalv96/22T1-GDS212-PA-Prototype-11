@@ -460,7 +460,6 @@ MonoBehaviour:
   fleeTarget: {fileID: 207268286}
   speed: 2
   turnSpeed: 5
-  health: 100
   nextWaypointDistance: 2.5
   repathRate: 0.5
   reachedEndOfPath: 0
@@ -478,8 +477,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce5fb8d60b6a6e4f81e1c948667cfc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerSecond: 5
+  damagePerSecond: 20
   health: 100
+  endGameUI: {fileID: 0}
+  winLoseText: {fileID: 0}
+  endGameText: {fileID: 0}
 --- !u!1 &6457757951799217677
 GameObject:
   m_ObjectHideFlags: 0

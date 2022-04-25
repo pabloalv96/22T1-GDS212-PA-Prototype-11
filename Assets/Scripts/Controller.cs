@@ -5,7 +5,7 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
 
-    public float moveSpeed = 6, health = 100f;
+    public float moveSpeed = 6;
 
     Rigidbody rb;
     Camera viewCamera;

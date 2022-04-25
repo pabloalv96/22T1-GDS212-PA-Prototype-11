@@ -7,12 +7,14 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] float timeValue = 90f;
-    [SerializeField] TextMeshProUGUI timeText;
+    [SerializeField] TextMeshProUGUI timeText, winLoseText, endGameText;
+    public GameObject endGameUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        endGameUI.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -27,6 +29,14 @@ public class Timer : MonoBehaviour
         }
 
         DisplayTime(timeValue); 
+
+        if (timeValue <= 0)
+        {
+            Time.timeScale = 0f;
+            endGameUI.SetActive(true);
+            winLoseText.text = "You Win!";
+            endGameText.text = "You have ascended into the light!";
+        }
     }
 
     void DisplayTime(float timeToDisplay)
@@ -41,4 +51,6 @@ public class Timer : MonoBehaviour
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
+
 }
