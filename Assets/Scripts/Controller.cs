@@ -5,7 +5,7 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
 
-    public float moveSpeed = 6;
+    public float moveSpeed = 6, health = 100f;
 
     Rigidbody rb;
     Camera viewCamera;
@@ -15,6 +15,9 @@ public class Controller : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         viewCamera = Camera.main;
+
+        GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.9f, 1f);
+
     }
 
     // Update is called once per frame

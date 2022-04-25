@@ -11,11 +11,11 @@ public class RunAway : Action
 
     public bool avoidedTarget;
 
-    //private CharacterController controller;
+    private CharacterController controller;
 
     public override void OnAwake()
     {
-        //controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
     }
     public override TaskStatus OnUpdate()
     {
@@ -31,9 +31,9 @@ public class RunAway : Action
         Vector3 velocity = dir * speed;
 
         //Move the agent with the Character Controller
-        //controller.SimpleMove(velocity);
+        controller.SimpleMove(velocity);
 
-        transform.position += velocity * Time.deltaTime;
+        //transform.position += velocity * Time.deltaTime;
 
         transform.LookAt(dir);
 

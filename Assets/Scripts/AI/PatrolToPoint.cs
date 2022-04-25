@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using BehaviorDesigner.Runtime.Tasks;
-using BehaviorDesigner.Runtime;
 
-public class PatrolToPoint : Action
+public class PatrolToPoint : MonoBehaviour
 {
     public Transform targetPosition;
 
     private Seeker seeker;
-    //private CharacterController controller;
+    private CharacterController controller;
 
     public Path path;
 
@@ -22,12 +20,12 @@ public class PatrolToPoint : Action
 
     public bool reachedEndOfPath;
 
-    public override void OnAwake()
+    public void Start()
     {
         seeker = GetComponent<Seeker>();
         // If you are writing a 2D game you should remove this line
         // and use the alternative way to move sugggested further below.
-        //controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
 
         // Start a new path to the targetPosition, call the the OnPathComplete function
         // when the path has been calculated (which may take a few frames depending on the complexity)
@@ -46,12 +44,12 @@ public class PatrolToPoint : Action
         }
     }
 
-    public override TaskStatus OnUpdate()
+    public void Update()
     {
         if (path == null)
         {
             // We have no path to follow yet, so don't do anything
-            return TaskStatus.Failure;
+            return;
         }
 
         // Check in a loop if we are close enough to the current waypoint to switch to the next one.
@@ -98,11 +96,11 @@ public class PatrolToPoint : Action
 
         // Move the agent using the CharacterController component
         // Note that SimpleMove takes a velocity in meters/second, so we should not multiply by Time.deltaTime
-        //controller.SimpleMove(velocity);
+        controller.SimpleMove(velocity);
 
         // If you are writing a 2D game you should remove the CharacterController code above and instead move the transform directly by uncommenting the next line
-         transform.position += velocity * Time.deltaTime;
+         //transform.position += velocity * Time.deltaTime;
 
-        return TaskStatus.Success;
+        //return TaskStatus.Success;
     }
 }

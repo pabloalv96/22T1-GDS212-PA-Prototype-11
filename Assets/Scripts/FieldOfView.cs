@@ -203,4 +203,9 @@ public class FieldOfView : MonoBehaviour
 
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
 }
