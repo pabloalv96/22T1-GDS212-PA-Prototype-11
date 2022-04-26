@@ -6,16 +6,21 @@ using TMPro;
 
 public class Damage : MonoBehaviour
 {
-    public float damagePerSecond = 5f, health = 100f;
+    public float damagePerSecond = 5f,health = 100f;
+    public float currentHealth;
     private FieldOfView fieldOfView;
 
     public GameObject endGameUI;
 
     public TextMeshProUGUI winLoseText, endGameText;
 
+    public HealthBar healthBar;
+
     void Start()
     {
         fieldOfView = GetComponent<FieldOfView>();
+        currentHealth = health;
+        healthBar.SetMaxHealth((int)health);
     }
 
     // Update is called once per frame
@@ -48,6 +53,8 @@ public class Damage : MonoBehaviour
             winLoseText.text = "You Lose!";
             endGameText.text = "You have be trapped inside the Shadow Realm";
         }
+
+        healthBar.SetHealth((int)health);
     }
 
     //public void OnTriggerEnter(Collider other)
