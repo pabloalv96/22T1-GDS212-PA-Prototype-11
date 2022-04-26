@@ -13,6 +13,8 @@ public class Damage : MonoBehaviour
 
     public TextMeshProUGUI winLoseText, endGameText;
 
+    public Controller controller;
+
     void Start()
     {
         fieldOfView = GetComponent<FieldOfView>();
@@ -45,6 +47,7 @@ public class Damage : MonoBehaviour
         {
             Time.timeScale = 0f;
             endGameUI.SetActive(true);
+            controller.enabled = false;
             winLoseText.text = "You Lose!";
             endGameText.text = "You have be trapped inside the Shadow Realm";
         }

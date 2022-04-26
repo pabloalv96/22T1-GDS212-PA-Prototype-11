@@ -9,11 +9,13 @@ public class Timer : MonoBehaviour
     [SerializeField] float timeValue = 90f;
     [SerializeField] TextMeshProUGUI timeText, winLoseText, endGameText;
     public GameObject endGameUI;
+    public Controller controller;
 
     // Start is called before the first frame update
     void Start()
     {
         endGameUI.SetActive(false);
+        controller.enabled = true;
         Time.timeScale = 1f;
     }
 
@@ -30,9 +32,10 @@ public class Timer : MonoBehaviour
 
         DisplayTime(timeValue); 
 
-        if (timeValue <= 0)
+        if (timeValue <= 0 || GameObject.FindGameObjectsWithTag("AI").Length <= 0)
         {
             Time.timeScale = 0f;
+            controller.enabled = false;
             endGameUI.SetActive(true);
             winLoseText.text = "You Win!";
             endGameText.text = "You have ascended into the light!";
