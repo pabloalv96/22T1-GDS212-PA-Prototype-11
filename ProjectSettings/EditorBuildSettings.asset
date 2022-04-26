@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ascension.unity
     guid: b4f94dee9b39f074dafa2170051857b8
+  - enabled: 1
+    path: Assets/Scenes/Backstory.unity
+    guid: 83aa2f2bdc1c4b143a27d4c8c5166a73
   m_configObjects: {}

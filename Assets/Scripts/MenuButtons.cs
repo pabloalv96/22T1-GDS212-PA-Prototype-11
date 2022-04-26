@@ -25,6 +25,11 @@ public class MenuButtons : MonoBehaviour
     public void Backstory()
     {
         SceneManager.LoadScene("Backstory");
+    } 
+    
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void Instructions()
