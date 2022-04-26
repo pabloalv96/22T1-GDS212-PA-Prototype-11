@@ -20,6 +20,11 @@ public class MenuButtons : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene("Ascension");
+        Time.timeScale = 1f;
+    } 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void Backstory()
