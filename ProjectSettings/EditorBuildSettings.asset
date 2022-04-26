@@ -10,8 +10,11 @@ EditorBuildSettings:
     guid: 8500be21f35309a4a87beab0eb41703a
   - enabled: 1
     path: Assets/Scenes/Ascension.unity
-    guid: b4f94dee9b39f074dafa2170051857b8
+    guid: 7670cb4e90ff31c48bb78617c559d1d7
   - enabled: 1
     path: Assets/Scenes/Backstory.unity
     guid: 83aa2f2bdc1c4b143a27d4c8c5166a73
+  - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: 0af386fe4ae4b3b4eb469a1b5da21043
   m_configObjects: {}
